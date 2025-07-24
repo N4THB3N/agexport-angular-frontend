@@ -1,11 +1,25 @@
 export interface Employee {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  position: string;
-  department: string;
-  salary: number;
-  hireDate: Date;
-  isActive: boolean;
+      employee_ID?: number,
+      dpi: string,
+      nit: string,
+      firstName: string,
+      name2: string,
+      lastName: string,
+      lastName2: string,
+      maritalStatus: string,
+      dob: string,
+      age : number,
+      igsS_No: string,
+      irtra   : string,
+      passport_No: string,
+      addr1: string,
+      addr2: string,
+      city: string,
+      email: string,
+      phoneNumber: string
+      department: string,
+      position: string,
+      salary: number,
+      hireDate: string,
+      createdAt: Date
 }

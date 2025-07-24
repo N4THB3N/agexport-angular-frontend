@@ -6,11 +6,11 @@
         <label for="username">Username:</label>
         <input
           type="text"
-          id="username"
-          formControlName="username"
+          id="Username"
+          formControlName="Username"
           class="form-control"
-          [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="invalid-feedback">
+          [class.is-invalid]="loginForm.get('Username')?.invalid && loginForm.get('Username')?.touched">
+        <div *ngIf="loginForm.get('Username')?.invalid && loginForm.get('Username')?.touched" class="invalid-feedback">
           Username is required
         </div>
       </div>
@@ -18,12 +18,12 @@
       <div class="form-group">
         <label for="password">Password:</label>
         <input
-          type="password"
-          id="password"
-          formControlName="password"
+          type="Password"
+          id="Password"
+          formControlName="Password"
           class="form-control"
-          [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+          [class.is-invalid]="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched">
+        <div *ngIf="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched" class="invalid-feedback">
           Password is required
         </div>
       </div>

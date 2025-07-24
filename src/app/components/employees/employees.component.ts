@@ -24,14 +24,29 @@ export class EmployeesComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.employeeForm = this.formBuilder.group({
+      employeeId: ['', Validators.required],
+      dpi: ['', Validators.required],
+      nit: ['', Validators.required],
       firstName: ['', Validators.required],
+      name2: ['', Validators.required],
       lastName: ['', Validators.required],
+      lastName2: ['', Validators.required],
+      maritalStatus: ['', Validators.required],
+      dob: ['', Validators.required],
+      age : [0, [Validators.required, Validators.min(0)]],
+      igsS_No: ['', Validators.required],
+      irtra   : ['', Validators.required],
+      passport_No: ['', Validators.required],
+      addr1: ['', Validators.required],
+      addr2: ['', Validators.required],
+      city: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      position: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
       department: ['', Validators.required],
+      position: ['', Validators.required],
       salary: [0, [Validators.required, Validators.min(0)]],
       hireDate: ['', Validators.required],
-      isActive: [true]
+      createdAt: [new Date(), Validators.required]
     });
   }
 
@@ -80,7 +95,7 @@ export class EmployeesComponent implements OnInit {
   updateEmployee(id: number, employee: Employee): void {
     this.employeeService.updateEmployee(id, employee).subscribe({
       next: (updatedEmployee) => {
-        const index = this.employees.findIndex(emp => emp.id === id);
+        const index = this.employees.findIndex(emp => emp.employee_ID === id);
         if (index !== -1) {
           this.employees[index] = updatedEmployee;
         }
@@ -94,7 +109,7 @@ export class EmployeesComponent implements OnInit {
 
   editEmployee(employee: Employee): void {
     this.isEditing = true;
-    this.editingId = employee.id!;
+    this.editingId = employee.employee_ID!;
     this.employeeForm.patchValue({
       firstName: employee.firstName,
       lastName: employee.lastName,
@@ -103,7 +118,6 @@ export class EmployeesComponent implements OnInit {
       department: employee.department,
       salary: employee.salary,
       hireDate: new Date(employee.hireDate).toISOString().split('T')[0],
-      isActive: employee.isActive
     });
   }
 
@@ -111,7 +125,7 @@ export class EmployeesComponent implements OnInit {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.employeeService.deleteEmployee(id).subscribe({
         next: () => {
-          this.employees = this.employees.filter(emp => emp.id !== id);
+          this.employees = this.employees.filter(emp => emp.employee_ID !== id);
         },
         error: (error) => {
           this.error = 'Failed to delete employee';
@@ -122,7 +136,6 @@ export class EmployeesComponent implements OnInit {
 
   resetForm(): void {
     this.employeeForm.reset({
-      isActive: true,
       salary: 0
     });
     this.isEditing = false;
